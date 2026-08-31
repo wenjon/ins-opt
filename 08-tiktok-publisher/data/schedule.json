@@ -1,0 +1,19 @@
+{
+  "_comment": "2 周循环排期。每天对应一个主卖点 + 形式。",
+  "schedule": [
+    {"day": 1, "week": 1, "sell": "brightening", "form": "image", "time": "20:30", "topic": "上手对比"},
+    {"day": 2, "week": 1, "sell": "natural", "form": "image", "time": "19:00", "topic": "水晶旅程"},
+    {"day": 3, "week": 1, "sell": "healing", "form": "video", "time": "21:00", "topic": "工作日疗愈"},
+    {"day": 4, "week": 1, "sell": "luck", "form": "image", "time": "20:00", "topic": "招财 / 事业"},
+    {"day": 5, "week": 1, "sell": "diy_stack", "form": "video", "time": "21:30", "topic": "叠戴公式"},
+    {"day": 6, "week": 1, "sell": "handmade", "form": "video", "time": "20:30", "topic": "串珠过程"},
+    {"day": 7, "week": 1, "sell": "general", "form": "image", "time": "19:30", "topic": "本周最爱"},
+    {"day": 8, "week": 2, "sell": "healing", "form": "image", "time": "21:00", "topic": "睡前疗愈"},
+    {"day": 9, "week": 2, "sell": "natural", "form": "video", "time": "20:00", "topic": "水晶旅程 v2"},
+    {"day": 10, "week": 2, "sell": "brightening", "form": "video", "time": "20:30", "topic": "上手实拍"},
+    {"day": 11, "week": 2, "sell": "luck", "form": "image", "time": "21:00", "topic": "平安 / 健康"},
+    {"day": 12, "week": 2, "sell": "diy_stack", "form": "image", "time": "19:00", "topic": "新叠戴组合"},
+    {"day": 13, "week": 2, "sell": "handmade", "form": "image", "time": "20:30", "topic": "手作礼物"},
+    {"day": 14, "week": 2, "sell": "general", "form": "video", "time": "21:30", "topic": "周复盘 + 互动"}
+  ]
+}

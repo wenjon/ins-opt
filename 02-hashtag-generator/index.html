@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💎 Crystal Hashtag Generator</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #fef6f9 0%, #f3e8ff 50%, #e0f2fe 100%);
+    min-height: 100vh;
+    color: #1f2937;
+    line-height: 1.6;
+    padding: 16px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 12px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .header a { color: #6b7280; text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+  .header a:hover { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+  .header .home { background: rgba(139,92,246,0.15); color: #8b5cf6; font-weight: 500; }
+  .header .brand {
+    font-weight: 700;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: auto;
+  }
+  .hero {
+    text-align: center;
+    padding: 24px 16px;
+  }
+  .hero h1 {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .hero p { color: #6b7280; font-size: 14px; }
+  .card {
+    background: rgba(255,255,255,0.95);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .card h2 { font-size: 15px; color: #374151; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  .form-group label { display: block; font-size: 12px; color: #6b7280; margin-bottom: 4px; font-weight: 500; }
+  select, input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    color: #1f2937;
+  }
+  select:focus, input:focus { outline: none; border-color: #8b5cf6; box-shadow: 0 0 0 3px rgba(139,92,246,0.1); }
+  .btn {
+    padding: 11px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 14px rgba(236,72,153,0.25);
+  }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: white;
+    color: #8b5cf6;
+    border: 1px solid #e5e7eb;
+  }
+  .btn-secondary:hover { border-color: #8b5cf6; background: #faf5ff; }
+  .actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .tier { margin-bottom: 16px; }
+  .tier-label {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; margin-bottom: 6px;
+  }
+  .tier-big .tier-label { color: #ec4899; }
+  .tier-mid .tier-label { color: #8b5cf6; }
+  .tier-small .tier-label { color: #06b6d4; }
+  .tier-region .tier-label { color: #f59e0b; }
+  .tier-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 10px;
+    background: #f9fafb;
+    border-radius: 8px;
+    min-height: 40px;
+    align-items: center;
+  }
+  .tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 12px;
+    color: #4b5563;
+    font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+  }
+  .tier-big .tag { border-color: #fbcfe8; color: #be185d; }
+  .tier-mid .tag { border-color: #ddd6fe; color: #6d28d9; }
+  .tier-small .tag { border-color: #cffafe; color: #0e7490; }
+  .tier-region .tag { border-color: #fed7aa; color: #c2410c; }
+  .copy-box {
+    margin-top: 14px;
+    padding: 14px;
+    background: #1f2937;
+    color: #f9fafb;
+    border-radius: 10px;
+    font-family: "SF Mono", Monaco, monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    word-break: break-all;
+    white-space: pre-wrap;
+  }
+  .copy-box .label {
+    color: #9ca3af;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+    font-family: -apple-system, sans-serif;
+  }
+  .copy-buttons { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .btn-copy {
+    background: rgba(139,92,246,0.15);
+    color: #c4b5fd;
+    border: 1px solid rgba(139,92,246,0.3);
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .btn-copy:hover { background: rgba(139,92,246,0.25); color: white; }
+  .btn-copy.copied { background: rgba(34,197,94,0.2); color: #86efac; }
+  .tip {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #78350f;
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .tip strong { color: #451a03; }
+  .stats {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    font-size: 12px; color: #6b7280;
+    margin-bottom: 12px;
+  }
+  .stats strong { color: #1f2937; }
+  .toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #10b981;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+    z-index: 1000;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+</style>
+<link rel="stylesheet" href="../_assets/style.css">
+</head>
+<body>
+<button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ 菜单</button>
+<div class="layout">
+<aside class="sidebar">
+<div class="sidebar-brand">
+<h1>💎 Crystal IG 运营</h1>
+<div class="sub">内容运营体系 v1.0</div>
+</div>
+<a href="../index.html" class="sidebar-home">🏠 首页 Home</a>
+<div class="nav-module">
+<div class="nav-module-header">🖼️ 01 产品素材库</div>
+<div class="nav-module-items">
+<a href="../09-product-assets/index.html" class="nav-item ">📷 图库浏览器</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📅 02 内容日历</div>
+<div class="nav-module-items">
+<a href="../01-content-calendar/two-week-cycle.html" class="nav-item ">2 周循环模板</a>
+<a href="../01-content-calendar/four-week-launch-plan.html" class="nav-item ">4 周启动计划</a>
+<a href="../01-content-calendar/daily-hour-checklist.html" class="nav-item ">每日 1 小时清单</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🏷️ 03 标签生成器</div>
+<div class="nav-module-items">
+<a href="index.html" class="nav-item active">✨ 打开工具</a>
+<a href="README.html" class="nav-item ">使用说明</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">✍️ 04 文案模板库</div>
+<div class="nav-module-items">
+<a href="../03-copy-templates/01-skin-brightening.html" class="nav-item ">🌟 显白 Skin Brightening</a>
+<a href="../03-copy-templates/02-natural.html" class="nav-item ">🌿 天然 Natural</a>
+<a href="../03-copy-templates/03-healing-stones.html" class="nav-item ">💎 疗愈石 Healing Stones</a>
+<a href="../03-copy-templates/04-good-luck.html" class="nav-item ">🍀 好运 Good Luck</a>
+<a href="../03-copy-templates/05-crystal-healing.html" class="nav-item ">🧘 水晶疗愈 Crystal Healing</a>
+<a href="../03-copy-templates/06-handmade.html" class="nav-item ">👐 手工制作 Handmade</a>
+<a href="../03-copy-templates/07-diy-stack.html" class="nav-item ">💫 DIY 叠戴 Stack</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📝 05 内容草稿</div>
+<div class="nav-module-items">
+<a href="../04-content-drafts/00-launch-week.html" class="nav-item ">🚀 启动 7 天内容</a>
+<a href="../04-content-drafts/01-funnel-framework.html" class="nav-item ">🎯 5 篇递进式框架</a>
+<a href="../04-content-drafts/series-01-skin-brightening.html" class="nav-item ">🌟 显白系列</a>
+<a href="../04-content-drafts/series-02-natural.html" class="nav-item ">🌿 天然系列</a>
+<a href="../04-content-drafts/series-03-healing.html" class="nav-item ">🧘 疗愈 + 水晶疗愈系列</a>
+<a href="../04-content-drafts/series-04-luck.html" class="nav-item ">🍀 好运系列</a>
+<a href="../04-content-drafts/series-05-handmade.html" class="nav-item ">👐 手工制作系列</a>
+<a href="../04-content-drafts/series-06-diy-stack.html" class="nav-item ">💫 DIY 叠戴系列</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📊 06 数据追踪</div>
+<div class="nav-module-items">
+<a href="../05-data-tracking/dashboard.html" class="nav-item ">📈 数据看板 Dashboard</a>
+<a href="../05-data-tracking/kpi-definitions.html" class="nav-item ">KPI 定义</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🤖 07 IG 自动化</div>
+<div class="nav-module-items">
+<a href="../06-instagram-automation/scheduling-guide.html" class="nav-item ">📖 完整配置指南</a>
+<a href="../06-instagram-automation/README.html" class="nav-item ">快速说明</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🖼️ 08 素材库</div>
+<div class="nav-module-items">
+<a href="../_assets/image-prompts.html" class="nav-item ">找图提示词库</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🎬 09 TikTok 发布</div>
+<div class="nav-module-items">
+<a href="../08-tiktok-publisher/index.html" class="nav-item ">🎬 今日发布包</a>
+<a href="../08-tiktok-publisher/README.html" class="nav-item ">📖 使用说明</a>
+</div></div>
+</aside>
+<main class="main">
+<header class="header">
+<div class="breadcrumb"><a href="../index.html">首页</a><span class="sep">›</span><span class="current">✨ 打开工具</span></div>
+</header>
+
+
+<nav class="header">
+  <span class="brand">💎 Crystal IG 运营</span>
+  <a href="../index.html" class="home">🏠 首页</a>
+  <a href="README.html">📖 说明</a>
+  <a href="../04-content-drafts/00-launch-week.html">📝 草稿</a>
+  <a href="../05-data-tracking/dashboard.html">📊 数据</a>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>💎 Hashtag Generator</h1>
+    <p>水晶手链 IG 标签生成器 · 选卖点 + 选地域，一键出 13 个分级标签</p>
+  </div>
+
+  <div class="card">
+    <h2>⚙️ 配置</h2>
+    <div class="grid">
+      <div class="form-group">
+        <label for="sp">主卖点 / Selling Point</label>
+        <select id="sp">
+          <option value="brightening">🌟 显白 / Skin Brightening</option>
+          <option value="natural">🌿 天然 / Natural</option>
+          <option value="healing">🧘 疗愈 / Healing</option>
+          <option value="luck">🍀 好运 / Good Luck</option>
+          <option value="handmade">👐 手工 / Handmade</option>
+          <option value="diy">💫 DIY 叠戴 / Stack</option>
+          <option value="all">✨ 通用 / All</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="region">目标地域 / Region</label>
+        <select id="region">
+          <option value="my-sg">🇲🇾 MY + 🇸🇬 SG</option>
+          <option value="my">🇲🇾 Malaysia Only</option>
+          <option value="sg">🇸🇬 Singapore Only</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="count">标签数量</label>
+        <select id="count">
+          <option value="13">13 个（推荐）</option>
+          <option value="20">20 个（上限）</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="seed">随机种子（留空=随机）</label>
+        <input type="number" id="seed" placeholder="可选">
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="btnGenerate">✨ 生成标签 / Generate</button>
+      <button class="btn btn-secondary" id="btnRandom">🎲 换一组</button>
+    </div>
+  </div>
+
+  <div class="card" id="resultCard">
+    <h2>📋 标签预览</h2>
+    <div class="stats" id="stats"></div>
+
+    <div class="tier tier-big">
+      <div class="tier-label">🥇 大标签（50万+）</div>
+      <div class="tier-tags" id="bigTags"></div>
+    </div>
+    <div class="tier tier-mid">
+      <div class="tier-label">🥈 中标签（5-50万）</div>
+      <div class="tier-tags" id="midTags"></div>
+    </div>
+    <div class="tier tier-small">
+      <div class="tier-label">🥉 小标签（&lt; 5万）</div>
+      <div class="tier-tags" id="smallTags"></div>
+    </div>
+    <div class="tier tier-region">
+      <div class="tier-label">🌏 地域标签</div>
+      <div class="tier-tags" id="regionTags"></div>
+    </div>
+
+    <div class="copy-box">
+      <span class="label">📋 方案 A：单条字符串（直接复制）</span>
+      <div id="copySingle">点击"生成标签"开始</div>
+    </div>
+
+    <div class="copy-box">
+      <span class="label">💬 方案 B：分段（正文 5 个 + 第一条评论 8 个）</span>
+      <div id="copySplit">点击"生成标签"开始</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="btn-copy" id="btnCopyA">📋 复制方案 A</button>
+      <button class="btn-copy" id="btnCopyB">📋 复制方案 B</button>
+    </div>
+
+    <div class="tip">
+      <strong>💡 使用建议：</strong>方案 A 适合 Stories；方案 B 适合 Feed 主帖——前 5 个权重最高的放正文末尾，其余 8 个放第一条评论。
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">✅ 已复制!</div>
+
+<script>
+  // ============== 标签数据（全部内联，无需外部文件） ==============
+
+  const DATA = {
+    sp: {
+      all: {
+        big: ["CrystalBracelet", "HealingCrystals", "NaturalCrystals"],
+        mid: ["CrystalJewelry", "GemstoneBracelet", "SpiritualJewelry", "BraceletOfInstagram", "CrystalLover"],
+        small: []
+      },
+      brightening: {
+        big: ["SkinBrightening", "GlowUp", "FairSkinGoals"],
+        mid: ["BraceletGlow", "WristGame", "BraceletStack", "YellowToneFriendly", "AsianBeauty"],
+        small: ["SkinFriendlyCrystal", "BrighteningCrystal"]
+      },
+      natural: {
+        big: ["NaturalCrystals", "RawCrystal", "GemstoneJewelry"],
+        mid: ["MineralInclusions", "AuthenticCrystal", "UntreatedCrystal", "NatureInspired", "GenuineStone"],
+        small: ["RealNotSynthetic", "CrystalCollector"]
+      },
+      healing: {
+        big: ["HealingCrystals", "CrystalHealing", "SpiritualJewelry"],
+        mid: ["ChakraHealing", "EnergyHealing", "Mindfulness", "SelfCare", "WellnessJewelry"],
+        small: ["ChakraBalance", "InnerPeace"]
+      },
+      luck: {
+        big: ["GoodLuckCharm", "FengShui", "LuckyJewelry"],
+        mid: ["CitrineBracelet", "GreenPhantom", "Prosperity", "WealthEnergy", "Manifestation"],
+        small: ["CareerLuck", "AbundanceJewelry"]
+      },
+      handmade: {
+        big: ["HandmadeJewelry", "HandmadeWithLove", "SupportSmall"],
+        mid: ["HandmadeBracelet", "ArtisanJewelry", "MadeWithLove", "SmallBatch", "HandCrafted"],
+        small: ["HandStrungBracelet", "OneOfAKind"]
+      },
+      diy: {
+        big: ["BraceletStack", "LayeredJewelry", "StackableBracelets"],
+        mid: ["BraceletLayering", "WristParty", "JewelryStack", "MixAndMatch", "BraceletCombos"],
+        small: ["CrystalStacking", "DailyStack"]
+      }
+    },
+    region: {
+      "my-sg": ["MalaysiaCrystal", "SingaporeCrystal", "CrystalMalaysia", "CrystalSingapore", "SoutheastAsiaJewelry"],
+      "my": ["MalaysiaCrystal", "CrystalMalaysia", "MalaysiaJewelry", "KualaLumpurJewelry", "MalaysiaFashion"],
+      "sg": ["SingaporeCrystal", "CrystalSingapore", "SGJewelry", "SingaporeFashion", "MadeInSG"]
+    },
+    general: ["DailyWear", "JewelryOfTheDay", "OOTD", "GiftIdea", "BohoJewelry"]
+  };
+
+  // ============== 工具函数 ==============
+
+  function seededRandom(seed) {
+    if (!seed) return Math.random;
+    let s = parseInt(seed);
+    return function() {
+      s = (s * 9301 + 49297) % 233280;
+      return s / 233280;
+    };
+  }
+
+  function shuffle(arr, rng) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(rng() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function pickN(arr, n, rng) {
+    return shuffle(arr, rng).slice(0, n);
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  }
+
+  function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(
+        () => showToast('✅ 已复制到剪贴板!'),
+        () => fallbackCopy(text)
+      );
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast('✅ 已复制!');
+    } catch (e) {
+      showToast('❌ 复制失败，请手动选择');
+    }
+    document.body.removeChild(ta);
+  }
+
+  // ============== 主逻辑 ==============
+
+  function generate() {
+    try {
+      const spKey = document.getElementById('sp').value;
+      const regionKey = document.getElementById('region').value;
+      const total = parseInt(document.getElementById('count').value);
+      const seed = document.getElementById('seed').value;
+
+      const sp = DATA.sp[spKey];
+      const region = DATA.region[regionKey];
+      const rng = seededRandom(seed);
+
+      let bigN, midN, smallN, regionN;
+      if (total === 13) { bigN = 3; midN = 5; smallN = 3; regionN = 2; }
+      else { bigN = 4; midN = 7; smallN = 5; regionN = 4; }
+
+      const big = pickN(sp.big, Math.min(bigN, sp.big.length), rng);
+      const mid = pickN(sp.mid, Math.min(midN, sp.mid.length), rng);
+
+      // 地域标签
+      const regionPicked = pickN(region, Math.min(regionN, region.length), rng);
+
+      // 小标签 = 卖点小标签 + 通用 + 地域（去重）
+      const smallPool = [...sp.small, ...DATA.general, ...region].filter(t => !regionPicked.includes(t));
+      const smallOnly = pickN(smallPool, Math.max(0, smallN), rng);
+
+      // 渲染 4 个 tier
+      render('bigTags', big);
+      render('midTags', mid);
+      render('smallTags', smallOnly);
+      render('regionTags', regionPicked);
+
+      // 统计
+      const totalCount = big.length + mid.length + smallOnly.length + regionPicked.length;
+      document.getElementById('stats').innerHTML =
+        '<span>共 <strong>' + totalCount + '</strong> 个标签</span>' +
+        '<span>大 <strong>' + big.length + '</strong> · 中 <strong>' + mid.length + '</strong> · 小 <strong>' + smallOnly.length + '</strong> · 地域 <strong>' + regionPicked.length + '</strong></span>';
+
+      // 复制文本
+      const allTags = [...big, ...mid, ...smallOnly, ...regionPicked];
+      const allFormatted = allTags.map(t => '#' + t).join(' ');
+      document.getElementById('copySingle').textContent = allFormatted;
+
+      // 分段：前 5 个权重高的（big + 部分 mid）放正文
+      const captionTags = [...big, ...mid.slice(0, Math.max(0, 5 - big.length))];
+      const commentTags = [...mid.slice(Math.max(0, 5 - big.length)), ...smallOnly, ...regionPicked];
+      const splitText = '【正文 Caption】\n' + captionTags.map(t => '#' + t).join(' ') +
+                        '\n\n【第一条评论 First Comment】\n' + commentTags.map(t => '#' + t).join(' ');
+      document.getElementById('copySplit').textContent = splitText;
+
+      // 自动滚动到结果（如果用户点了按钮）
+      if (document.activeElement && document.activeElement.tagName === 'BUTTON') {
+        document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (e) {
+      alert('生成失败: ' + e.message + '\n请截图反馈');
+      console.error(e);
+    }
+  }
+
+  function render(id, tags) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (tags.length === 0) {
+      el.innerHTML = '<span style="color: #d1d5db; font-size: 12px;">（无）</span>';
+      return;
+    }
+    el.innerHTML = tags.map(t => '<span class="tag">#' + t + '</span>').join('');
+  }
+
+  // ============== 事件绑定 ==============
+
+  document.getElementById('btnGenerate').addEventListener('click', generate);
+  document.getElementById('btnRandom').addEventListener('click', function() {
+    document.getElementById('seed').value = '';
+    generate();
+  });
+  document.getElementById('btnCopyA').addEventListener('click', function() {
+    copyToClipboard(document.getElementById('copySingle').textContent);
+  });
+  document.getElementById('btnCopyB').addEventListener('click', function() {
+    copyToClipboard(document.getElementById('copySplit').textContent);
+  });
+
+  // 卖点/地域/数量变化时自动重新生成
+  ['sp', 'region', 'count'].forEach(id => {
+    document.getElementById(id).addEventListener('change', generate);
+  });
+
+  // 页面加载立即生成一次
+  window.addEventListener('DOMContentLoaded', function() {
+    generate();
+    console.log('✅ Hashtag Generator 已就绪，点击按钮或更改选项即可生成');
+  });
+
+  // 兜底：万一 DOMContentLoaded 已经触发
+  if (document.readyState === 'loading') {
+    // 等待 DOMContentLoaded
+  } else {
+    generate();
+  }
+</script>
+
+
+</main>
+</div>
+</body>
+</html>
+

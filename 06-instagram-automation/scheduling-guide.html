@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二部分：自动化运行（Windows 任务计划程序） · Crystal IG 运营</title>
+<link rel="stylesheet" href="../_assets/style.css">
+</head>
+<body>
+<button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ 菜单</button>
+<div class="layout">
+<aside class="sidebar">
+<div class="sidebar-brand">
+<h1>💎 Crystal IG 运营</h1>
+<div class="sub">内容运营体系 v1.0</div>
+</div>
+<a href="../index.html" class="sidebar-home">🏠 首页 Home</a>
+<div class="nav-module">
+<div class="nav-module-header">🖼️ 01 产品素材库</div>
+<div class="nav-module-items">
+<a href="../09-product-assets/index.html" class="nav-item ">📷 图库浏览器</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📅 02 内容日历</div>
+<div class="nav-module-items">
+<a href="../01-content-calendar/two-week-cycle.html" class="nav-item ">2 周循环模板</a>
+<a href="../01-content-calendar/four-week-launch-plan.html" class="nav-item ">4 周启动计划</a>
+<a href="../01-content-calendar/daily-hour-checklist.html" class="nav-item ">每日 1 小时清单</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🏷️ 03 标签生成器</div>
+<div class="nav-module-items">
+<a href="../02-hashtag-generator/index.html" class="nav-item ">✨ 打开工具</a>
+<a href="../02-hashtag-generator/README.html" class="nav-item ">使用说明</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">✍️ 04 文案模板库</div>
+<div class="nav-module-items">
+<a href="../03-copy-templates/01-skin-brightening.html" class="nav-item ">🌟 显白 Skin Brightening</a>
+<a href="../03-copy-templates/02-natural.html" class="nav-item ">🌿 天然 Natural</a>
+<a href="../03-copy-templates/03-healing-stones.html" class="nav-item ">💎 疗愈石 Healing Stones</a>
+<a href="../03-copy-templates/04-good-luck.html" class="nav-item ">🍀 好运 Good Luck</a>
+<a href="../03-copy-templates/05-crystal-healing.html" class="nav-item ">🧘 水晶疗愈 Crystal Healing</a>
+<a href="../03-copy-templates/06-handmade.html" class="nav-item ">👐 手工制作 Handmade</a>
+<a href="../03-copy-templates/07-diy-stack.html" class="nav-item ">💫 DIY 叠戴 Stack</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📝 05 内容草稿</div>
+<div class="nav-module-items">
+<a href="../04-content-drafts/00-launch-week.html" class="nav-item ">🚀 启动 7 天内容</a>
+<a href="../04-content-drafts/01-funnel-framework.html" class="nav-item ">🎯 5 篇递进式框架</a>
+<a href="../04-content-drafts/series-01-skin-brightening.html" class="nav-item ">🌟 显白系列</a>
+<a href="../04-content-drafts/series-02-natural.html" class="nav-item ">🌿 天然系列</a>
+<a href="../04-content-drafts/series-03-healing.html" class="nav-item ">🧘 疗愈 + 水晶疗愈系列</a>
+<a href="../04-content-drafts/series-04-luck.html" class="nav-item ">🍀 好运系列</a>
+<a href="../04-content-drafts/series-05-handmade.html" class="nav-item ">👐 手工制作系列</a>
+<a href="../04-content-drafts/series-06-diy-stack.html" class="nav-item ">💫 DIY 叠戴系列</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📊 06 数据追踪</div>
+<div class="nav-module-items">
+<a href="../05-data-tracking/dashboard.html" class="nav-item ">📈 数据看板 Dashboard</a>
+<a href="../05-data-tracking/kpi-definitions.html" class="nav-item ">KPI 定义</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🤖 07 IG 自动化</div>
+<div class="nav-module-items">
+<a href="scheduling-guide.html" class="nav-item active">📖 完整配置指南</a>
+<a href="README.html" class="nav-item ">快速说明</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🖼️ 08 素材库</div>
+<div class="nav-module-items">
+<a href="../_assets/image-prompts.html" class="nav-item ">找图提示词库</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🎬 09 TikTok 发布</div>
+<div class="nav-module-items">
+<a href="../08-tiktok-publisher/index.html" class="nav-item ">🎬 今日发布包</a>
+<a href="../08-tiktok-publisher/README.html" class="nav-item ">📖 使用说明</a>
+</div></div>
+</aside>
+<main class="main">
+<header class="header">
+<div class="breadcrumb"><a href="../index.html">首页</a><span class="sep">›</span><span class="current">📖 完整配置指南</span></div>
+</header>
+<article class="content">
+<h2>1.1 把 IG 账号转为 Business / Creator</h2>
+<ol>
+<li>打开 IG App</li>
+<li>进入 <strong>Settings</strong> → <strong>Account</strong> → <strong>Switch to Professional Account</strong></li>
+<li>选择 <strong>Business</strong> 或 <strong>Creator</strong></li>
+<li>选择类目（推荐：Jewelry/Watches 或 Shopping &amp; Retail）</li>
+<li>关联一个 <strong>Facebook Page</strong>（如果还没有，先创建一个）</li>
+</ol>
+<blockquote>
+<p>关联方法：Settings → Account → Linked Accounts → Facebook → Connect</p>
+</blockquote>
+<h2>1.2 注册 Meta 开发者账号</h2>
+<ol>
+<li>访问 <a href="https://developers.facebook.com">developers.facebook.com</a></li>
+<li>用你的 Facebook 账号登录</li>
+<li>完成开发者注册（可能需要手机验证）</li>
+</ol>
+<h2>1.3 创建 Meta App</h2>
+<ol>
+<li>进入 <a href="https://developers.facebook.com/apps">developers.facebook.com/apps</a></li>
+<li>点击 <strong>Create App</strong></li>
+<li>选择 <strong>Other</strong> → <strong>Next</strong></li>
+<li>类型选 <strong>Business</strong></li>
+<li>填写：<br />
+   - App name: <code>Crystal IG Insights</code>（或你喜欢的名字）<br />
+   - Contact email: 你的邮箱</li>
+<li>创建完成后进入 App Dashboard</li>
+</ol>
+<h2>1.4 添加 Instagram Graph API 产品</h2>
+<ol>
+<li>在 App Dashboard 找到 <strong>Add a Product</strong></li>
+<li>找到 <strong>Instagram Graph API</strong> → 点击 <strong>Set Up</strong></li>
+<li>这样就启用了该 API 权限</li>
+</ol>
+<h2>1.5 申请必要权限</h2>
+<p>你需要这些权限（部分需要 App Review 审核）：</p>
+<table>
+<thead>
+<tr>
+<th>权限</th>
+<th>用途</th>
+<th>是否需要审核</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instagram_basic</code></td>
+<td>读取基本信息</td>
+<td>❌（个人开发者可用）</td>
+</tr>
+<tr>
+<td><code>instagram_manage_insights</code></td>
+<td>读取数据 insights</td>
+<td>❌（个人账号可用）</td>
+</tr>
+<tr>
+<td><code>pages_show_list</code></td>
+<td>列出关联的 Pages</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>pages_read_engagement</code></td>
+<td>读取 Page 数据</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>business_management</code></td>
+<td>商业管理</td>
+<td>⚠️（部分需审核）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>个人账号的简化路径</strong>：如果你只是抓取<strong>自己</strong>的 IG Business 账号数据，<strong>大部分权限不需要 App Review</strong>，可以直接用。</p>
+</blockquote>
+<h2>1.6 获取 Access Token</h2>
+<h3>步骤 A：用 Graph API Explorer 生成短期 Token</h3>
+<ol>
+<li>进入 <a href="https://developers.facebook.com/tools/explorer/">Graph API Explorer</a></li>
+<li>右上角 <strong>Meta App</strong> 选择你刚创建的 App</li>
+<li><strong>User or Page</strong> 选择 <strong>User Token</strong></li>
+<li><strong>Permissions</strong> 添加：<code>instagram_basic</code>, <code>instagram_manage_insights</code>, <code>pages_show_list</code>, <code>pages_read_engagement</code></li>
+<li>点击 <strong>Generate Access Token</strong></li>
+<li>复制这个 <strong>short-lived token</strong>（1 小时过期）</li>
+</ol>
+<h3>步骤 B：换成长效 Token</h3>
+<p>打开浏览器（或用 curl）访问：</p>
+<pre><code>https://graph.instagram.com/access_token
+  ?grant_type=ig_exchange_token
+  &amp;client_secret=你的APP_SECRET
+  &amp;access_token=刚才的短期TOKEN
+</code></pre>
+<blockquote>
+<p><code>APP_SECRET</code> 在 App Dashboard → Settings → Basic → App Secret</p>
+</blockquote>
+<p>返回的 JSON 里 <code>access_token</code> 字段就是 <strong>long-lived token</strong>（60 天有效）。</p>
+<h3>步骤 C：刷新长效 Token（防止过期）</h3>
+<p>60 天到期前，用这个 endpoint 刷新：</p>
+<pre><code>https://graph.instagram.com/refresh_access_token
+  ?grant_type=ig_refresh_token
+  &amp;access_token=你的长效TOKEN
+</code></pre>
+<blockquote>
+<p>⚠️ 这个 endpoint 不会换新的长效 token，而是给一个新的 60 天 token。建议设置日历提醒每 50 天刷新一次。</p>
+</blockquote>
+<h2>1.7 获取 Instagram Business Account ID</h2>
+<p>用 Graph API Explorer（或浏览器）：</p>
+<pre><code>https://graph.facebook.com/v18.0/me/accounts?access_token=你的TOKEN
+</code></pre>
+<p>返回的 JSON 里找：<br />
+- <code>id</code>：Facebook Page ID<br />
+- <code>instagram_business_account</code> → <code>id</code>：<strong>Instagram Business Account ID</strong>（这才是你要的）</p>
+<p>或者用：</p>
+<pre><code>https://graph.facebook.com/v18.0/你的PAGE_ID?fields=instagram_business_account&amp;access_token=你的TOKEN
+</code></pre>
+<h2>1.8 填入 .env</h2>
+<p>复制 <code>.env.example</code> 为 <code>.env</code>：</p>
+<pre><code class="language-bash">cp .env.example .env
+</code></pre>
+<p>用记事本打开 <code>.env</code>，填入：</p>
+<pre><code>IG_BUSINESS_ID=17841234567890123
+IG_ACCESS_TOKEN=IGAAxxxx...长字符串
+GRAPH_API_VERSION=v18.0
+DATA_DIR=data
+DEBUG=false
+</code></pre>
+<h2>1.9 测试运行</h2>
+<pre><code class="language-bash">cd D:\github\ins-opt\06-instagram-automation
+pip install -r requirements.txt
+python fetch_insights.py
+</code></pre>
+<p>成功的话会看到：</p>
+<pre><code>[10:30:15] 👤 抓取账号信息...
+[10:30:16]   ✓ 账号: @yourbrand
+[10:30:16]   ✓ 粉丝数: 1234
+[10:30:17] 📊 抓取账号级数据...
+[10:30:18] 📷 抓取最近 25 条帖子...
+...
+[10:30:25] ✅ 全部完成！数据保存在: data
+</code></pre>
+<hr />
+<h1>第二部分：自动化运行（Windows 任务计划程序）</h1>
+<h2>2.1 测试脚本能正常运行</h2>
+<p>确保手动运行 <code>run.bat</code> 能成功。</p>
+<h2>2.2 打开任务计划程序</h2>
+<p>按 <code>Win + R</code> → 输入 <code>taskschd.msc</code> → 回车</p>
+<h2>2.3 创建基本任务</h2>
+<ol>
+<li>右侧点击 <strong>Create Basic Task...</strong></li>
+<li>名称：<code>Crystal IG Weekly Fetch</code></li>
+<li>描述：<code>每周自动抓取 IG 数据</code></li>
+</ol>
+<h2>2.4 设置触发器</h2>
+<ul>
+<li>触发频率：<strong>Weekly</strong></li>
+<li>时间：<strong>每周日 22:00</strong>（你方便复盘的时间）</li>
+<li>勾选所有星期（每周日就行）</li>
+</ul>
+<h2>2.5 设置操作</h2>
+<ul>
+<li>操作：<strong>Start a program</strong></li>
+<li>Program/script：<code>D:\github\ins-opt\06-instagram-automation\run.bat</code></li>
+<li>Start in：<code>D:\github\ins-opt\06-instagram-automation</code></li>
+</ul>
+<h2>2.6 完成设置</h2>
+<ul>
+<li>勾选 <strong>Open the Properties dialog</strong> → Finish</li>
+<li>在 Properties 里：</li>
+<li>General tab: 勾选 <strong>Run whether user is logged on or not</strong></li>
+<li>Conditions tab: 取消 <strong>Start only if on AC power</strong>（笔记本用电池也要跑）</li>
+</ul>
+<h2>2.7 手动测试</h2>
+<ol>
+<li>在任务列表里找到 <code>Crystal IG Weekly Fetch</code></li>
+<li>右键 → <strong>Run</strong></li>
+<li>检查 <code>data/</code> 目录是否有新 CSV 生成</li>
+</ol>
+<h2>2.8 监控任务是否成功</h2>
+<h3>方法 A：查看历史</h3>
+<ul>
+<li>任务计划程序 → 选中任务 → 看 <strong>Last Run Result</strong></li>
+<li>0x0 = 成功</li>
+<li>0x1 = 失败</li>
+</ul>
+<h3>方法 B：看日志</h3>
+<ul>
+<li>打开 Event Viewer（事件查看器）</li>
+<li>Windows Logs → Application</li>
+<li>找来源为 "TaskScheduler" 的事件</li>
+</ul>
+<h3>方法 C：邮件通知</h3>
+<p>在任务的 General tab → 勾选 <strong>Send an e-mail when the task fails</strong></p>
+<blockquote>
+<p>需要先在 Action Center 配置 SMTP</p>
+</blockquote>
+<hr />
+<h1>第三部分：故障排查</h1>
+<h2>Q1: <code>401 Unauthorized</code></h2>
+<p><strong>原因</strong>：Access Token 过期或无效<br />
+<strong>解决</strong>：<br />
+1. 重新生成短期 token<br />
+2. 换成长效 token<br />
+3. 更新 <code>.env</code> 里的 <code>IG_ACCESS_TOKEN</code></p>
+<h2>Q2: <code>400 Bad Request</code> / "Invalid ID"</h2>
+<p><strong>原因</strong>：<code>IG_BUSINESS_ID</code> 不正确<br />
+<strong>解决</strong>：<br />
+1. 用 <code>https://graph.facebook.com/v18.0/me/accounts?access_token=TOKEN</code> 查<br />
+2. 找到 <code>instagram_business_account.id</code> 字段<br />
+3. 更新 <code>.env</code></p>
+<h2>Q3: 抓取不到数据（空白 CSV）</h2>
+<p><strong>原因</strong>：<br />
+- 账号不是 Business 类型 → 转 Business<br />
+- 权限不足 → 检查 App 权限设置<br />
+- 账号刚转 Business，API 还没同步 → 等待 24 小时</p>
+<h2>Q4: <code>Rate limit exceeded</code></h2>
+<p><strong>原因</strong>：调用频率超限（每用户每 app 每小时 200 次）<br />
+<strong>解决</strong>：<br />
+- 减少抓取频率<br />
+- 本脚本每条帖子调用 2 次 API，25 条帖子 = 50+ 次调用，<strong>每周一次</strong>是安全的</p>
+<h2>Q5: 在中国运行，连接超时</h2>
+<p><strong>原因</strong>：Graph API 域名（graph.facebook.com）在国内可能不稳定<br />
+<strong>解决</strong>：<br />
+- 在脚本里加 HTTP 代理<br />
+- 或在国内服务器 / 海外 VPS 上运行</p>
+<p>修改 <code>fetch_insights.py</code> 的 <code>api_get</code> 函数：</p>
+<pre><code class="language-python">proxies = {
+    &quot;http&quot;: &quot;http://127.0.0.1:7890&quot;,  # 你的代理
+    &quot;https&quot;: &quot;http://127.0.0.1:7890&quot;,
+}
+r = requests.get(url, params=params, timeout=30, proxies=proxies)
+</code></pre>
+<h2>Q6: Python 没安装</h2>
+<p><strong>解决</strong>：<br />
+- 下载 <a href="https://www.python.org/downloads/">Python 3.11+</a><br />
+- 安装时勾选 <strong>Add Python to PATH</strong><br />
+- 重启命令行</p>
+<h2>Q7: 依赖安装失败</h2>
+<p><strong>解决</strong>：</p>
+<pre><code class="language-bash">python -m pip install --upgrade pip
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<hr />
+<h1>第四部分：扩展（可选）</h1>
+<h2>4.1 抓取 Stories Insights</h2>
+<p>Stories 有独立的 insights endpoint，本脚本未包含。如需要可加：<br />
+- <code>/{media_id}/insights?metric=reach,impressions,exits,replies,taps_forward,taps_back</code></p>
+<h2>4.2 抓取粉丝增长历史</h2>
+<p>需要 <code>audience_insights</code> 权限：</p>
+<pre><code>/{IG_BUSINESS_ID}/insights?metric=follower_count&amp;period=day&amp;since=2024-01-01
+</code></pre>
+<h2>4.3 推送到 Notion / Google Sheets</h2>
+<p>在 <code>fetch_insights.py</code> 末尾加：</p>
+<pre><code class="language-python">import requests as r
+# 推送到 Notion / Sheets
+</code></pre>
+<h2>4.4 监控异常（粉丝暴跌等）</h2>
+<p>加一个 <code>alert</code> 函数：</p>
+<pre><code class="language-python">def check_anomalies(metrics):
+    if metrics.get(&quot;follower_count&quot;, 0) &lt; last_week_count * 0.9:
+        send_email(&quot;粉丝暴跌警告&quot;, &quot;请检查 IG 账号健康度&quot;)
+</code></pre>
+<hr />
+<h1>第五部分：替代方案（如果不想用 Graph API）</h1>
+<h2>方案 A：手动 + 截图</h2>
+<ul>
+<li>每周日花 10 分钟打开 IG App → Insights → 截图</li>
+<li>存到 <code>05-data-tracking/weekly-screenshots/</code></li>
+</ul>
+<h2>方案 B：Meta Business Suite 网页版</h2>
+<ul>
+<li>访问 <a href="https://business.facebook.com">business.facebook.com</a></li>
+<li>进入 IG 账号的 Insights</li>
+<li>有更详细的数据，且可以导出 CSV</li>
+</ul>
+<h2>方案 C：第三方工具（收费）</h2>
+<ul>
+<li><strong>Later</strong> - 排程 + 数据</li>
+<li><strong>Hootsuite</strong> - 全平台</li>
+<li><strong>Buffer</strong> - 简洁</li>
+<li><strong>Sprout Social</strong> - 高级分析</li>
+</ul>
+<h2>方案 D：AI 截图识别（高级玩法）</h2>
+<ul>
+<li>用 OCR 工具读取 IG Insights 截图</li>
+<li>自动填入 CSV</li>
+<li>可用 Python + pytesseract</li>
+</ul>
+<hr />
+<p><strong>总结</strong>：<br />
+- 一次性配置：30-60 分钟<br />
+- 后续每周自动运行：0 分钟<br />
+- 长期来看，比手动记录节省 100+ 小时</p>
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+
+</div>
+</body>
+</html>
+<div class="page-nav"><a href="../05-data-tracking/kpi-definitions.html" class="prev"><span class="nav-label">← 上一篇</span>KPI 定义</a><a href="README.html" class="next"><span class="nav-label">下一篇 →</span>快速说明</a></div>
+</article>
+<footer class="footer">
+Crystal Bracelet IG 运营体系 · 由 <a href="../index.html">ins-opt</a> 仓库生成 · 最近更新 2026-08
+</footer>
+</main>
+</div>
+</body>
+</html>

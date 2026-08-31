@@ -1,0 +1,18 @@
+{
+  "_comment": "标签数据。从 02-hashtag-generator 提取，给 TK 精简到 5-8 个（TK 标签太多会降权）。",
+  "by_sell": {
+    "brightening": ["SkinBrightening", "BraceletGlow", "YellowToneFriendly", "WristGame"],
+    "natural": ["NaturalCrystals", "AuthenticCrystal", "RealNotSynthetic"],
+    "healing": ["HealingCrystals", "ChakraHealing", "SelfCare", "Mindfulness"],
+    "luck": ["GoodLuckCharm", "FengShui", "CitrineBracelet", "Manifestation"],
+    "handmade": ["HandmadeJewelry", "HandmadeBracelet", "SmallBatch", "HandStrungBracelet"],
+    "diy_stack": ["BraceletStack", "LayeredJewelry", "MixAndMatch", "CrystalStacking"],
+    "general": ["CrystalBracelet", "JewelryOfTheDay", "OOTD", "DailyWear"]
+  },
+  "region": {
+    "my-sg": ["MalaysiaCrystal", "SingaporeCrystal"],
+    "my": ["MalaysiaCrystal", "KLfashion"],
+    "sg": ["SingaporeCrystal", "SGJewelry"]
+  },
+  "always_include": ["CrystalBracelet", "OOTD"]
+}

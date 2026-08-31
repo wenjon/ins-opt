@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>快速说明 · Crystal IG 运营</title>
+<link rel="stylesheet" href="../_assets/style.css">
+</head>
+<body>
+<button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰ 菜单</button>
+<div class="layout">
+<aside class="sidebar">
+<div class="sidebar-brand">
+<h1>💎 Crystal IG 运营</h1>
+<div class="sub">内容运营体系 v1.0</div>
+</div>
+<a href="../index.html" class="sidebar-home">🏠 首页 Home</a>
+<div class="nav-module">
+<div class="nav-module-header">🖼️ 01 产品素材库</div>
+<div class="nav-module-items">
+<a href="../09-product-assets/index.html" class="nav-item ">📷 图库浏览器</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📅 02 内容日历</div>
+<div class="nav-module-items">
+<a href="../01-content-calendar/two-week-cycle.html" class="nav-item ">2 周循环模板</a>
+<a href="../01-content-calendar/four-week-launch-plan.html" class="nav-item ">4 周启动计划</a>
+<a href="../01-content-calendar/daily-hour-checklist.html" class="nav-item ">每日 1 小时清单</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🏷️ 03 标签生成器</div>
+<div class="nav-module-items">
+<a href="../02-hashtag-generator/index.html" class="nav-item ">✨ 打开工具</a>
+<a href="../02-hashtag-generator/README.html" class="nav-item ">使用说明</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">✍️ 04 文案模板库</div>
+<div class="nav-module-items">
+<a href="../03-copy-templates/01-skin-brightening.html" class="nav-item ">🌟 显白 Skin Brightening</a>
+<a href="../03-copy-templates/02-natural.html" class="nav-item ">🌿 天然 Natural</a>
+<a href="../03-copy-templates/03-healing-stones.html" class="nav-item ">💎 疗愈石 Healing Stones</a>
+<a href="../03-copy-templates/04-good-luck.html" class="nav-item ">🍀 好运 Good Luck</a>
+<a href="../03-copy-templates/05-crystal-healing.html" class="nav-item ">🧘 水晶疗愈 Crystal Healing</a>
+<a href="../03-copy-templates/06-handmade.html" class="nav-item ">👐 手工制作 Handmade</a>
+<a href="../03-copy-templates/07-diy-stack.html" class="nav-item ">💫 DIY 叠戴 Stack</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📝 05 内容草稿</div>
+<div class="nav-module-items">
+<a href="../04-content-drafts/00-launch-week.html" class="nav-item ">🚀 启动 7 天内容</a>
+<a href="../04-content-drafts/01-funnel-framework.html" class="nav-item ">🎯 5 篇递进式框架</a>
+<a href="../04-content-drafts/series-01-skin-brightening.html" class="nav-item ">🌟 显白系列</a>
+<a href="../04-content-drafts/series-02-natural.html" class="nav-item ">🌿 天然系列</a>
+<a href="../04-content-drafts/series-03-healing.html" class="nav-item ">🧘 疗愈 + 水晶疗愈系列</a>
+<a href="../04-content-drafts/series-04-luck.html" class="nav-item ">🍀 好运系列</a>
+<a href="../04-content-drafts/series-05-handmade.html" class="nav-item ">👐 手工制作系列</a>
+<a href="../04-content-drafts/series-06-diy-stack.html" class="nav-item ">💫 DIY 叠戴系列</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">📊 06 数据追踪</div>
+<div class="nav-module-items">
+<a href="../05-data-tracking/dashboard.html" class="nav-item ">📈 数据看板 Dashboard</a>
+<a href="../05-data-tracking/kpi-definitions.html" class="nav-item ">KPI 定义</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🤖 07 IG 自动化</div>
+<div class="nav-module-items">
+<a href="scheduling-guide.html" class="nav-item ">📖 完整配置指南</a>
+<a href="README.html" class="nav-item active">快速说明</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🖼️ 08 素材库</div>
+<div class="nav-module-items">
+<a href="../_assets/image-prompts.html" class="nav-item ">找图提示词库</a>
+</div></div>
+<div class="nav-module">
+<div class="nav-module-header">🎬 09 TikTok 发布</div>
+<div class="nav-module-items">
+<a href="../08-tiktok-publisher/index.html" class="nav-item ">🎬 今日发布包</a>
+<a href="../08-tiktok-publisher/README.html" class="nav-item ">📖 使用说明</a>
+</div></div>
+</aside>
+<main class="main">
+<header class="header">
+<div class="breadcrumb"><a href="../index.html">首页</a><span class="sep">›</span><span class="current">快速说明</span></div>
+</header>
+<article class="content">
+<h1>快速说明</h1>
+<blockquote>
+<p>用 Instagram Graph API 自动抓取账号和帖子数据，保存到 CSV，方便复盘。</p>
+</blockquote>
+<h2>⚠️ 重要前提</h2>
+<p>这个功能<strong>需要你做一些前期准备</strong>：<br />
+1. 把 IG 账号转为 <strong>Business 或 Creator 账号</strong>（免费，5 分钟搞定）<br />
+2. 创建一个 Facebook Page（IG Business 账号必须关联一个）<br />
+3. 注册 Meta 开发者账号<br />
+4. 创建一个 Meta App<br />
+5. 申请 <code>instagram_basic</code> 和 <code>instagram_manage_insights</code> 权限<br />
+6. 获取长效 Access Token</p>
+<p>完整流程见 <code>scheduling-guide.md</code>。</p>
+<h2>文件结构</h2>
+<pre><code>06-instagram-automation/
+├── README.md                       ← 本文件
+├── fetch_insights.py               ← 主脚本
+├── .env.example                    ← 配置模板
+├── requirements.txt                ← Python 依赖
+├── scheduling-guide.md             ← 完整配置 + 任务计划指南
+├── data/                           ← 输出目录（自动创建）
+│   └── .gitkeep
+└── run.bat                         ← Windows 一键运行脚本
+</code></pre>
+<h2>快速开始</h2>
+<h3>1. 安装依赖</h3>
+<pre><code class="language-bash">cd D:\github\ins-opt\06-instagram-automation
+pip install -r requirements.txt
+</code></pre>
+<h3>2. 配置环境变量</h3>
+<pre><code class="language-bash">cp .env.example .env
+# 用记事本编辑 .env，填入你的 IG_ACCESS_TOKEN 和 IG_BUSINESS_ID
+</code></pre>
+<h3>3. 测试运行</h3>
+<pre><code class="language-bash">python fetch_insights.py
+</code></pre>
+<p>成功的话会在 <code>data/</code> 目录生成 CSV 文件。</p>
+<h3>4. 设置定时任务（可选）</h3>
+<p>按 <code>scheduling-guide.md</code> 配置 Windows 任务计划程序，每周自动运行。</p>
+<h2>抓取的内容</h2>
+<h3>Account-Level（账号级）</h3>
+<ul>
+<li>关注者总数</li>
+<li>触达（Reach）</li>
+<li>展示数（Impressions）</li>
+<li>主页访问</li>
+<li>链接点击</li>
+<li>周同比变化</li>
+</ul>
+<h3>Media-Level（帖子级）</h3>
+<p>最近 25 条帖子（API 限制）的：<br />
+- 发布时间<br />
+- 类型（IMAGE / VIDEO / CAROUSEL_ALBUM / REELS）<br />
+- 永久链接<br />
+- 文案<br />
+- 点赞 / 评论 / 收藏 / 分享<br />
+- 触达 / 展示</p>
+<h2>⚠️ 限制和注意事项</h2>
+<ul>
+<li><strong>只能抓 Business/Creator 账号</strong>，不能抓 Personal 账号</li>
+<li><strong>Access Token 60 天过期</strong>，需要定期刷新（脚本会提示）</li>
+<li><strong>历史数据 API 限制</strong>：单次最多返回 25 条帖子，按时间倒序</li>
+<li><strong>Stories insights 单独接口</strong>，本脚本未涵盖</li>
+<li><strong>不抓取粉丝个人信息</strong>（只抓聚合数据）</li>
+</ul>
+<h2>合规</h2>
+<ul>
+<li>✅ 只使用 Meta 官方 Graph API</li>
+<li>✅ 不抓取其他用户数据</li>
+<li>✅ 遵守 Instagram Platform Policy</li>
+<li>❌ 不要把这个脚本用于抓取不属于自己的账号</li>
+</ul>
+<h2>备选方案</h2>
+<p>如果不想申请 Graph API：<br />
+- <strong>手动方案</strong>：每周花 10 分钟看 IG Insights，手动填到 <code>05-data-tracking/weekly-log.csv</code><br />
+- <strong>第三方工具</strong>（收费）：Later、Hootsuite、Buffer 等都提供数据导出<br />
+- <strong>截图方案</strong>：用 IG App 截图，每周存档（最简单）</p>
+<h2>故障排查</h2>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>401 Unauthorized</code></td>
+<td>Access Token 过期，重新生成</td>
+</tr>
+<tr>
+<td><code>400 Bad Request</code></td>
+<td>检查 IG_BUSINESS_ID 是否正确</td>
+</tr>
+<tr>
+<td><code>Permission denied</code></td>
+<td>App 权限未通过审核，重新申请</td>
+</tr>
+<tr>
+<td><code>Rate limit</code></td>
+<td>等待 1 小时后重试</td>
+</tr>
+<tr>
+<td><code>Connection timeout</code></td>
+<td>检查网络，必要时配置代理</td>
+</tr>
+</tbody>
+</table>
+<p>详见 <code>scheduling-guide.md</code>。</p>
+
+
+
+
+</div>
+</body>
+</html>
+<div class="page-nav"><a href="scheduling-guide.html" class="prev"><span class="nav-label">← 上一篇</span>📖 完整配置指南</a><a href="../_assets/image-prompts.html" class="next"><span class="nav-label">下一篇 →</span>找图提示词库</a></div>
+</article>
+<footer class="footer">
+Crystal Bracelet IG 运营体系 · 由 <a href="../index.html">ins-opt</a> 仓库生成 · 最近更新 2026-08
+</footer>
+</main>
+</div>
+</body>
+</html>
